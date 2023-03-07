@@ -13,20 +13,32 @@ import numpy as np
 
 
 
+import streamlit as st
+
 def main():
-    # Create a list to store the input values
-    input_values = []
+    # Initialize an empty list to store the input values
+    values = []
 
-    # Add a button to the app that allows users to add a new input field
-    if st.button('Add Input'):
-        input_values.append('')
+    # Add a text input field to the app
+    input_value = st.text_input('Enter a value:', '')
 
-    # Add a text input field for each value in the input_values list
-    for i, value in enumerate(input_values):
-        input_values[i] = st.text_input(f'Input {i + 1}:', value)
+    # If a value is entered, append it to the list of values
+    if input_value:
+        values.append(input_value)
 
-    # Display the input values in the app
-    st.write('Input Values:', input_values)
+    # Display the list of values in the app
+    st.write('Values:', values)
+
+    # Add a button with a plus sign to generate a new input field
+    if st.button('+'):
+        # If the button is clicked, add a new input field
+        new_value = st.text_input('Enter a value:', '')
+        # If a value is entered, append it to the list of values
+        if new_value:
+            values.append(new_value)
+
+    # Display the updated list of values in the app
+    st.write('Updated values:', values)
 
 if __name__ == '__main__':
     main()
