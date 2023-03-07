@@ -14,14 +14,19 @@ import numpy as np
 
 
 def main():
-    # Add a text input field to the app
-    input_value = st.text_input('Enter a value:', '')
+    # Create a list to store the input values
+    input_values = []
 
-    # Store the input value in a variable
-    stored_value = input_value
+    # Add a button to the app that allows users to add a new input field
+    if st.button('Add Input'):
+        input_values.append('')
 
-    # Display the stored value in the app
-    st.write('Stored value:', stored_value)
+    # Add a text input field for each value in the input_values list
+    for i, value in enumerate(input_values):
+        input_values[i] = st.text_input(f'Input {i + 1}:', value)
+
+    # Display the input values in the app
+    st.write('Input Values:', input_values)
 
 if __name__ == '__main__':
     main()
